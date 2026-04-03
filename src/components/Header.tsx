@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 const Header = () => {
   const [search, setSearch] = useState<string>("")
   const [data, setData] = useState<Movie[] | undefined>()
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: searchMovies,
     onSuccess: (data: MoviesResponse) => {
       setData(data?.results)
@@ -58,7 +58,7 @@ const Header = () => {
           </div>
           <Bell />
         </div>
-        {data && search != "" && (
+        {data && search != "" && !isPending && (
           <div className="absolute top-12 right-10 z-50 w-[95%] bg-black/75">
             <HorizontalMovie title={"Search"} movies={data.slice().reverse()} />
           </div>
