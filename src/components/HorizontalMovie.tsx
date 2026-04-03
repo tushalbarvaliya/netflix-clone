@@ -1,16 +1,22 @@
 import { Star } from "lucide-react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel"
 import type { Movie } from "@/utils/type"
 
 type Props = {
   title: string
-  movies: Movie[]|undefined
+  movies: Movie[] | undefined
 }
 
 const HorizontalMovie = ({ title, movies }: Props) => {
   return (
     <>
-      <div className="my-10 h-fit w-full overflow-hidden px-15">
+      <div className="my-4 h-fit w-full overflow-hidden px-15">
         <h1 className="my-4 text-3xl">{title}</h1>
         <Carousel className="relative h-fit w-full">
           <CarouselContent className={"h-fit"}>
@@ -27,7 +33,9 @@ const HorizontalMovie = ({ title, movies }: Props) => {
                         className="absolute h-full w-full object-cover object-top brightness-75"
                       />
                       <div className="absolute right-0 bottom-4 z-10 mx-4 w-full text-right">
-                        <h1 className="text-2xl text-white">{item.title||item.name}</h1>
+                        <h1 className="text-2xl text-white">
+                          {item.title || item.name}
+                        </h1>
                         <p className="flex items-center justify-end gap-3">
                           <Star fill="yellow" />
                           {item.vote_average.toString().slice(0, 4)}
@@ -41,6 +49,7 @@ const HorizontalMovie = ({ title, movies }: Props) => {
           <CarouselNext />
           <CarouselPrevious />
         </Carousel>
+        {movies?.length == 0 && <h1>No result found </h1>}
       </div>
     </>
   )

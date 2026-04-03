@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query"
 import { searchMovies } from "@/api/moiveList"
 import type { Movie, MoviesResponse } from "@/utils/type"
 import HorizontalMovie from "./HorizontalMovie"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Header = () => {
   const [search, setSearch] = useState<string>("")
@@ -16,6 +16,14 @@ const Header = () => {
       setData(data?.results)
     },
   })
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      mutate(search)
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [search, mutate])
 
   return (
     <>
@@ -45,18 +53,17 @@ const Header = () => {
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value)
-                mutate(e.target.value)
               }}
             />
           </div>
           <Bell />
         </div>
+        {data && search != "" && (
+          <div className="absolute top-12 right-10 z-50 w-[95%] bg-black/75">
+            <HorizontalMovie title={"Search"} movies={data.slice().reverse()} />
+          </div>
+        )}
       </nav>
-      {data && search != "" && (
-        <div className="absolute top-12 right-10 z-50 w-[95%] bg-black/75">
-          <HorizontalMovie title={"Search"} movies={data.slice().reverse()} />
-        </div>
-      )}
     </>
   )
 }
