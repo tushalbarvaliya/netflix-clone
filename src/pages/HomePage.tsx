@@ -1,5 +1,6 @@
-import { getPopular } from "@/api/moiveList"
+import { getDiscover, getMovies, getPopular } from "@/api/moiveList"
 import Header from "@/components/Header"
+import HorizontalMovie from "@/components/HorizontalMovie"
 import {
   Carousel,
   CarouselContent,
@@ -15,12 +16,20 @@ const HomePage = () => {
     queryKey: ["now-playing"],
     queryFn: getPopular,
   })
+  const { data: movies } = useQuery<MoviesResponse>({
+    queryKey: ["popular"],
+    queryFn: getMovies,
+  })
+  const { data: discover } = useQuery<MoviesResponse>({
+    queryKey: ["discover"],
+    queryFn: getDiscover,
+  })
   return (
     <>
       <Header />
       <div className="flex w-full items-center justify-center overflow-hidden">
         <Carousel
-          className="w-full h-screen"
+          className="h-screen w-full"
           plugins={[
             Autoplay({
               delay: 2000,
@@ -44,8 +53,7 @@ const HomePage = () => {
                         <Star fill="yellow"></Star>
                         {item.vote_average.toString().slice(0, 4)}
                       </p>
-                      <p>
-                      </p>
+                      <p></p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -54,6 +62,8 @@ const HomePage = () => {
           </CarouselContent>
         </Carousel>
       </div>
+      <HorizontalMovie title="Popular Movies" movies={movies?.results} />
+      <HorizontalMovie title="Discover Movies" movies={discover?.results} />
     </>
   )
 }
