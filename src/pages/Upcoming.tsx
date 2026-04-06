@@ -5,15 +5,15 @@ import { useState } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Navigate } from "react-router-dom"
 import Header from "@/components/Header"
-import { popular } from "@/api/moives"
+import { upcoming } from "@/api/moives"
 
-const Popular = () => {
+const Upcoming = () => {
   const [id, setId] = useState<number>(1)
   const { data, isLoading, isError } = useQuery<MoviesResponse>({
     queryFn: () => {
-      return popular(id)
+      return upcoming(id)
     },
-    queryKey: [`popular-${id}`],
+    queryKey: [`upcoming-${id}`],
   })
   if (isError) {
     return <Navigate to={"/home"} replace />
@@ -23,7 +23,7 @@ const Popular = () => {
     <>
       <Header />
       <div className="mt-14 h-full w-full">
-        <h1 className="m-4 font-mono text-3xl font-semibold">Movies</h1>
+        <h1 className="m-4 font-mono text-3xl font-semibold">Upcoming</h1>
         <div className="grid grid-cols-6 gap-4">
           {isLoading &&
             Array.from({ length: 20 }, (_, i) => i).map((item) => (
@@ -73,4 +73,4 @@ const Popular = () => {
   )
 }
 
-export default Popular
+export default Upcoming

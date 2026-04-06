@@ -11,6 +11,7 @@ import SignUpPage from "./pages/SignUpPage"
 import TVShowsPage from "./pages/TVShowsPage"
 import Movies from "./pages/Moives"
 import Popular from "./pages/Popular"
+import Upcoming from "./pages/Upcoming"
 
 const queryClient = new QueryClient()
 createRoot(document.getElementById("root")!).render(
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/tv-shows" element={<TVShowsPage />}></Route>
             <Route path="/movies" element={<Movies />}></Route>
             <Route path="/popular" element={<Popular />}></Route>
+            <Route path="/upcoming" element={<Upcoming />}></Route>
             <Route path="/watch-list" element={<HomePage />}></Route>
           </Routes>
         </BrowserRouter>

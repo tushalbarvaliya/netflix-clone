@@ -41,7 +41,7 @@ const Header = () => {
             <Link to="/tv-shows">TV Shows</Link>
             <Link to="/movies">Movies</Link>
             <Link to="/popular">New & Popular</Link>
-            <Link to="#">My List</Link>
+            <Link to="/upcoming">Upcoming</Link>
           </div>
         </div>
         <div className="flex items-center gap-4">
