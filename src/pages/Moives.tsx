@@ -1,4 +1,3 @@
-import { tvShows } from "@/api/tv-shows"
 import { Button } from "@/components/ui/button"
 import type { MoviesResponse } from "@/utils/type"
 import { useQuery } from "@tanstack/react-query"
@@ -6,14 +5,15 @@ import { useState } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Navigate } from "react-router-dom"
 import Header from "@/components/Header"
+import { movies } from "@/api/moives"
 
-const TVShowsPage = () => {
+const Movies = () => {
   const [id, setId] = useState<number>(1)
   const { data, isLoading, isError } = useQuery<MoviesResponse>({
     queryFn: () => {
-      return tvShows(id)
+      return movies(id)
     },
-    queryKey: [`tv-show${id}`],
+    queryKey: [`movies-${id}`],
   })
   if (isError) {
     return <Navigate to={"/home"} replace />
@@ -23,7 +23,7 @@ const TVShowsPage = () => {
     <>
       <Header />
       <div className="mt-14 h-full w-full">
-        <h1 className="m-4 font-mono text-3xl font-semibold">TV shows</h1>
+        <h1 className="m-4 font-mono text-3xl font-semibold">Movies</h1>
         <div className="grid grid-cols-6 gap-4">
           {isLoading &&
             Array.from({ length: 20 }, (_, i) => i).map((item) => (
@@ -73,4 +73,4 @@ const TVShowsPage = () => {
   )
 }
 
-export default TVShowsPage
+export default Movies

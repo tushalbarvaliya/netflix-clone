@@ -39,8 +39,8 @@ const Header = () => {
           <div className="hidden items-center gap-4 lg:flex">
             <Link to="/home">Home</Link>
             <Link to="/tv-shows">TV Shows</Link>
-            <Link to="#">Movies</Link>
-            <Link to="#">New & Popular</Link>
+            <Link to="/movies">Movies</Link>
+            <Link to="/popular">New & Popular</Link>
             <Link to="#">My List</Link>
           </div>
         </div>
