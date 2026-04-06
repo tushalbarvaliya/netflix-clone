@@ -37,8 +37,8 @@ const Header = () => {
             />
           </Link>
           <div className="hidden items-center gap-4 lg:flex">
-            <Link to="#">Home</Link>
-            <Link to="#">TV Shows</Link>
+            <Link to="/home">Home</Link>
+            <Link to="/tv-shows">TV Shows</Link>
             <Link to="#">Movies</Link>
             <Link to="#">New & Popular</Link>
             <Link to="#">My List</Link>

@@ -9,7 +9,7 @@ To add components to your app, run the following command:
 ```bash
 npx shadcn@latest add button
 ```
-
+https://api.themoviedb.org/3/discover/tv
 This will place the ui components in the `src/components` directory.
 
 ## Using components
