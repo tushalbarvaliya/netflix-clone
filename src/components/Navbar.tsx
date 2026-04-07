@@ -5,8 +5,15 @@ import { useRef } from "react"
 
 const Navbar = () => {
   const navContainer = useRef<HTMLDivElement>(null)
+  const innerContainer = useRef<HTMLDivElement>(null)
   useGSAP(() => {
-    gsap.from(navContainer.current?.children || navContainer.current, {
+    const tl = gsap.timeline()
+    tl.from(navContainer.current, {
+      opacity: 0,
+      y: -20,
+      duration: 0.3,
+    })
+    tl.from(innerContainer.current?.children || innerContainer.current, {
       opacity: 0,
       y: -20,
       duration: 0.3,
@@ -19,13 +26,13 @@ const Navbar = () => {
         <Link to={"/home"}>
           <img src="/full-logo.png" alt="" className="h-10 w-30 object-cover" />
         </Link>
-        {/* <div className="hidden items-center gap-4 lg:flex"> */}
+        <div ref={innerContainer} className="hidden items-center gap-4 lg:flex">
           <Link to="/home">Home</Link>
           <Link to="/tv-shows">TV Shows</Link>
           <Link to="/movies">Movies</Link>
           <Link to="/popular">New & Popular</Link>
           <Link to="/upcoming">Upcoming</Link>
-        {/* </div> */}
+        </div>
       </div>
     </>
   )
