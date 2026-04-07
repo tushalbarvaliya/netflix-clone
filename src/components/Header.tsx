@@ -1,11 +1,11 @@
 import { Bell, Search } from "lucide-react"
-import { Link } from "react-router-dom"
 import { Input } from "./ui/input"
 import { useMutation } from "@tanstack/react-query"
 import { searchMovies } from "@/api/moiveList"
 import type { Movie, MoviesResponse } from "@/utils/type"
 import HorizontalMovie from "./HorizontalMovie"
 import { useEffect, useState } from "react"
+import Navbar from "./Navbar"
 
 const Header = () => {
   const [search, setSearch] = useState<string>("")
@@ -28,22 +28,7 @@ const Header = () => {
   return (
     <>
       <nav className="fixed top-0 z-10 flex h-10 w-full items-center justify-between bg-stone-900/80 p-6 sm:px-25">
-        <div className="flex h-10 items-center gap-4">
-          <Link to={"/home"}>
-            <img
-              src="/full-logo.png"
-              alt=""
-              className="h-10 w-30 object-cover"
-            />
-          </Link>
-          <div className="hidden items-center gap-4 lg:flex">
-            <Link to="/home">Home</Link>
-            <Link to="/tv-shows">TV Shows</Link>
-            <Link to="/movies">Movies</Link>
-            <Link to="/popular">New & Popular</Link>
-            <Link to="/upcoming">Upcoming</Link>
-          </div>
-        </div>
+        <Navbar />
         <div className="flex items-center gap-4">
           <div className="relative flex items-center">
             <Search className="absolute ml-2" />

@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Navigate } from "react-router-dom"
-import Header from "@/components/Header"
 import { movies } from "@/api/moives"
 
 const Movies = () => {
@@ -21,7 +20,6 @@ const Movies = () => {
 
   return (
     <>
-      <Header />
       <div className="mt-14 h-full w-full">
         <h1 className="m-4 font-mono text-3xl font-semibold">Movies</h1>
         <div className="grid grid-cols-6 gap-4">

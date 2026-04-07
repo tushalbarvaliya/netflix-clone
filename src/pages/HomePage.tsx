@@ -1,5 +1,4 @@
 import { getDiscover, getMovies, getPopular } from "@/api/moiveList"
-import Header from "@/components/Header"
 import HorizontalMovie from "@/components/HorizontalMovie"
 import {
   Carousel,
@@ -26,7 +25,6 @@ const HomePage = () => {
   })
   return (
     <>
-      <Header />
       <div className="flex w-full items-center justify-center overflow-hidden">
         <Carousel
           className="h-screen w-full"

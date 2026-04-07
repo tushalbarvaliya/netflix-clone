@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Navigate } from "react-router-dom"
-import Header from "@/components/Header"
 
 const TVShowsPage = () => {
   const [id, setId] = useState<number>(1)
@@ -21,7 +20,6 @@ const TVShowsPage = () => {
 
   return (
     <>
-      <Header />
       <div className="mt-14 h-full w-full">
         <h1 className="m-4 font-mono text-3xl font-semibold">TV shows</h1>
         <div className="grid grid-cols-6 gap-4">
