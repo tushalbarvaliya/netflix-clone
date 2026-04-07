@@ -46,8 +46,8 @@ const HorizontalMovie = ({ title, movies }: Props) => {
                 )
               })}
           </CarouselContent>
-          <CarouselNext />
-          <CarouselPrevious />
+          <CarouselNext  className="h-full"/>
+          <CarouselPrevious className="h-full"/>
         </Carousel>
         {movies?.length == 0 && <h1>No result found </h1>}
       </div>
